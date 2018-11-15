@@ -21,10 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.robotois.insparkScore"
     },
     "android": {
-      "package": "com.robotois.inspark"
+      "package": "com.robotois.insparkScore"
     },
     "githubUrl": "https://github.com/Robotois/ScoreApp"
   }
