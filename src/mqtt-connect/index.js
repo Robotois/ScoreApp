@@ -24,9 +24,9 @@ const updateScore = (team, increment) => {
     `${scoreTopic}/${teams[team]}`,
     JSON.stringify({ action: 'goal', increment }),
   );
-}
+};
 
-const resetScore = () => {
+const startScore = () => {
   client.publish(
     `${scoreTopic}/yellow`,
     JSON.stringify({ action: 'start' }),
@@ -35,10 +35,22 @@ const resetScore = () => {
     `${scoreTopic}/white`,
     JSON.stringify({ action: 'start' }),
   );
-}
+};
+
+const stopScore = () => {
+  client.publish(
+    `${scoreTopic}/yellow`,
+    JSON.stringify({ action: 'stop' }),
+  );
+  client.publish(
+    `${scoreTopic}/white`,
+    JSON.stringify({ action: 'stop' }),
+  );
+};
 
 export {
   connect,
   updateScore,
-  resetScore,
+  startScore,
+  stopScore,
 }

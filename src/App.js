@@ -1,23 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import moment from 'moment';
 import MainView from './components/MainView';
-import { updateScore, resetScore, connect } from './mqtt-connect';
+import { updateScore, startScore, connect, stopScore } from './mqtt-connect';
 
-const defaultState = {
-  yTeam: {
-    goals: 0,
-    fetching: false,
-  },
-  wTeam: {
-    goals: 0,
-    fetching: false,
-  },
-};
-
+let initTime;
 export default class App extends React.Component {
   state = {
-    ...defaultState
+    yTeam: {
+      goals: 0,
+      fetching: false,
+    },
+    wTeam: {
+      goals: 0,
+      fetching: false,
+    },
+    time: '00:00',
   };
+  timerInterval = null;
   componentDidMount() {
     connect();
   }
@@ -35,8 +35,22 @@ export default class App extends React.Component {
         this.clearFetching(team);
     }, 5000);
   }
-  handleResetScore = () => {
-    resetScore();
+  startTimer = () => {
+    initTime = moment();
+    this.timerInterval = setInterval(() => {
+      const duration = moment(moment().diff(initTime));
+      this.setState({ time: duration.format('mm:ss') });
+    }, 1000);
+  }
+
+  handleStartScore = (start) => () => {
+    if (start) {
+      startScore();
+    } else {
+      stopScore();
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
     this.setState({
       yTeam: {
         goals: 0,
@@ -46,11 +60,15 @@ export default class App extends React.Component {
         goals: 0,
         fetching: true,
       },
+      time: '00:00',
     });
     setTimeout(() => {
-        this.clearFetching('yTeam');
-        this.clearFetching('wTeam');
-    }, 3000);
+      if (start) {
+        this.startTimer();
+      }
+      this.clearFetching('yTeam');
+      this.clearFetching('wTeam');
+    }, 4000);
   }
 
   clearFetching = (team) => {
@@ -68,7 +86,8 @@ export default class App extends React.Component {
       <MainView
         {...this.state}
         updateScore={this.handleUpdateScore}
-        resetScore={this.handleResetScore}
+        startScore={this.handleStartScore(true)}
+        stopScore={this.handleStartScore(false)}
       />
     );
   }
