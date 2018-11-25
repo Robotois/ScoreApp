@@ -7,26 +7,26 @@ const Score = ({ yTeam, wTeam }) => (
     <Col
       style={{
         backgroundColor: '#FBC02D',
-        height: 175,
+        height: 250,
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
       }}
     >
-      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 100 }}>
+      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 140 }}>
         {yTeam.goals}
       </Text>
     </Col>
     <Col
       style={{
         backgroundColor: '#F5F5F5',
-        height: 175,
+        height: 250,
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
       }}
     >
-      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 100 }}>
+      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 140 }}>
         {wTeam.goals}
       </Text>
     </Col>

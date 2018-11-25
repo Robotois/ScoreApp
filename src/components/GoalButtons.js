@@ -11,12 +11,12 @@ const GoalButtons = ({ incrementScore, decrementScore, disabled }) => (
         rounded
         block
         success
-        style={{ width: '75%', height: 60 }}
+        style={{ width: '65%', height: 80 }}
         onPress={incrementScore}
         disabled={disabled}
       >
-        <Icon type="FontAwesome" name="plus-circle" style={{color: '#F5F5F5', fontSize: 30}} />
-        <Text style={{color: '#F5F5F5', fontSize: 25, fontWeight: 'bold'}}> GOL!</Text>
+        <Icon type="FontAwesome" name="plus-circle" style={{color: '#F5F5F5', fontSize: 35}} />
+        <Text style={{color: '#F5F5F5', fontSize: 35, fontWeight: 'bold'}}> GOL!</Text>
       </Button>
     </Row>
     <Row style={{ justifyContent: 'center' }}>
@@ -25,12 +25,12 @@ const GoalButtons = ({ incrementScore, decrementScore, disabled }) => (
         rounded
         block
         light
-        style={{width: '75%' }}
+        style={{ width: '60%', height: 75 }}
         onPress={decrementScore}
         disabled={disabled}
       >
-        <Icon type="FontAwesome" name="minus-circle" style={{color: '#E64A19', fontSize: 20}} />
-        <Text style={{color: '#E64A19', fontSize: 20}}> Restar</Text>
+        <Icon type="FontAwesome" name="minus-circle" style={{color: '#E64A19', fontSize: 35}} />
+        <Text style={{color: '#E64A19', fontSize: 30}}> Restar</Text>
       </Button>
     </Row>
   </Col>

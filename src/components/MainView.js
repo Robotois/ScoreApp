@@ -24,8 +24,8 @@ const LayoutExample = ({
     <Header transparent style={{ height: 35 }}/>
     <Grid>
       <Row size={1} style={{ justifyContent: 'center' }}>
-        <Badge info style={{ width: '30%', height: 35, alignItems: 'center' }}>
-          <Text style={{fontSize: 25, fontWeight: 'bold', color: colors.white }}>{time}</Text>
+        <Badge info style={{ width: '30%', height: 60, alignItems: 'center' }}>
+          <Text style={{fontSize: 40, fontWeight: 'bold', color: colors.white }}>{time}</Text>
         </Badge>
       </Row>
       <Score yTeam={yTeam} wTeam={wTeam} />
@@ -48,10 +48,10 @@ const LayoutExample = ({
           block
           info
           onPress={startScore}
-          style={{ width: '45%' }}
+          style={{ width: '35%', height: 60 }}
         >
-          <Icon type="FontAwesome" name="play-circle" style={{color: colors.white, fontSize: 25 }} />
-          <Text style={{color: colors.white, fontSize: 18, fontWeight: 'bold'}}> Nuevo Partido </Text>
+          <Icon type="FontAwesome" name="play-circle" style={{color: colors.white, fontSize: 30 }} />
+          <Text style={{color: colors.white, fontSize: 25, fontWeight: 'bold'}}> Nuevo Partido </Text>
         </Button>
         <Button
           iconLeft
@@ -59,10 +59,10 @@ const LayoutExample = ({
           block
           danger
           onPress={stopScore}
-          style={{ width: '45%' }}
+          style={{ width: '35%', height: 60 }}
         >
-          <Icon type="FontAwesome" name="stop-circle" style={{color: colors.white, fontSize: 20 }} />
-          <Text style={{color: colors.white, fontSize: 15, fontWeight: 'bold'}}> DETENER!</Text>
+          <Icon type="FontAwesome" name="stop-circle" style={{color: colors.white, fontSize: 30 }} />
+          <Text style={{color: colors.white, fontSize: 25, fontWeight: 'bold'}}> DETENER!</Text>
         </Button>
       </Row>
     </Grid>
