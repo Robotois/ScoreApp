@@ -13,7 +13,7 @@ const Score = ({ yTeam, wTeam }) => (
         alignItems: 'center',
       }}
     >
-      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 140 }}>
+      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 160 }}>
         {yTeam.goals}
       </Text>
     </Col>
@@ -26,7 +26,7 @@ const Score = ({ yTeam, wTeam }) => (
         alignItems: 'center',
       }}
     >
-      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 140 }}>
+      <Text style={{ color: '#673AB7', fontWeight: 'bold', fontSize: 160 }}>
         {wTeam.goals}
       </Text>
     </Col>
