@@ -20,13 +20,11 @@ const LayoutExample = ({
   stopScore,
   time,
 }) => (
-  <Container>
+  <Container style={{ backgroundColor: "#212121" }}>
     <Header transparent style={{ height: 35 }}/>
     <Grid>
       <Row size={1} style={{ justifyContent: 'center' }}>
-        <Badge info style={{ width: '30%', height: 60, alignItems: 'center' }}>
-          <Text style={{fontSize: 40, fontWeight: 'bold', color: colors.white }}>{time}</Text>
-        </Badge>
+        <Text style={{fontSize: 80, fontWeight: 'bold', color: colors.red }}>{time}</Text>
       </Row>
       <Score yTeam={yTeam} wTeam={wTeam} />
       <Row size={4}>
