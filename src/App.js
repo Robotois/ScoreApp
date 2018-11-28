@@ -5,6 +5,7 @@ import MainView from './components/MainView';
 import { updateScore, startScore, connect, stopScore } from './mqtt-connect';
 
 let initTime;
+let timerInterval;
 export default class App extends React.Component {
   state = {
     yTeam: {
@@ -17,10 +18,11 @@ export default class App extends React.Component {
     },
     time: '00:00',
   };
-  timerInterval = null;
+  
   componentDidMount() {
     connect();
   }
+
   handleUpdateScore = (team, increment) => () => {
     const { goals } = this.state[team];
     const newGoal = increment == 1 ? goals + 1 : goals - 1;
@@ -35,12 +37,19 @@ export default class App extends React.Component {
         this.clearFetching(team);
     }, 5000);
   }
+
   startTimer = () => {
     initTime = moment();
-    this.timerInterval = setInterval(() => {
+    timerInterval = setInterval(() => {
       const duration = moment(moment().diff(initTime));
       this.setState({ time: duration.format('mm:ss') });
     }, 1000);
+  }
+
+  _stopTimer = () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    this.setState({ time: '00:60' });
   }
 
   handleStartScore = (start) => () => {
@@ -48,8 +57,7 @@ export default class App extends React.Component {
       startScore();
     } else {
       stopScore();
-      clearInterval(this.timerInterval);
-      this.timerInterval = null;
+      this._stopTimer();
     }
     this.setState({
       yTeam: {
