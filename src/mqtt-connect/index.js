@@ -24,9 +24,17 @@ const updateScore = (team, increment) => {
     `${scoreTopic}/${teams[team]}`,
     JSON.stringify({ action: 'goal', increment }),
   );
+  client.publish(
+    `${scoreTopic}/timer`,
+    JSON.stringify({ action: 'goal', increment }),
+  );
 };
 
 const startScore = () => {
+  client.publish(
+    `${scoreTopic}/timer`,
+    JSON.stringify({ action: 'start' }),
+  );
   client.publish(
     `${scoreTopic}/yellow`,
     JSON.stringify({ action: 'start' }),
@@ -38,6 +46,10 @@ const startScore = () => {
 };
 
 const stopScore = () => {
+  client.publish(
+    `${scoreTopic}/timer`,
+    JSON.stringify({ action: 'stop' }),
+  );
   client.publish(
     `${scoreTopic}/yellow`,
     JSON.stringify({ action: 'stop' }),
